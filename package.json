@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "hot-reload" : "zenn preview"
+  },
+  "dependencies": {
+    "zenn-cli": "^0.1.89"
+  }
+}
