@@ -2,7 +2,7 @@
 title: 個人開発で使用した技術の話 vol.1【希望の睡眠】
 emoji: 💤
 type: idea
-topics: [技術選定, javascript, nodejs, electron]
+topics: [javascript, nodejs, electron, npm]
 published: false
 ---
 
