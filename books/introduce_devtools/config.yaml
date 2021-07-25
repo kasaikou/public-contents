@@ -1,0 +1,21 @@
+title: 普段使っているツールを整理して何に使っているのかを再認識してみた
+summary: "
+  最近、人にプログラミングを教える（？）機会がありまして、
+  その説明をしている最中、「このツール、何に使っているんだっけ？」という事態に陥ってしまいました。
+  そのようなことをなくすために、今回は自分の使っているツールを整理して、
+  そのついでに記事にまとめて紹介していきたいと思います。
+  "
+published: false
+price: 0
+topics: [tools, github, vscode, programming]
+chapters:
+  - softwares
+  - vscode-ext
+  - vscode-config
+  - github
+  - language-cpp
+  - language-python
+  - language-golang
+  - npm-pkg
+  - purpose-server
+ 
