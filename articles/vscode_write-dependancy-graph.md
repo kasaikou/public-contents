@@ -2,7 +2,7 @@
 title: そうだ、VS Codeで絵（え：Graph）を書こう。
 emoji: 🖍️
 type: tech
-topics: [VSCode, グラフツール, drawio, mermaid, PlantUML]
+topics: [VSCode, グラフツール, drawio, mermaidjs, PlantUML]
 published: true
 ---
 
