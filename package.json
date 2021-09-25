@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "hot-reload" : "zenn preview"
+    "hot-reload": "zenn preview"
   },
   "dependencies": {
     "zenn-cli": "^0.1.89"
