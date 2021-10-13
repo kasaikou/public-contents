@@ -3,6 +3,6 @@
     "hot-reload": "zenn preview"
   },
   "dependencies": {
-    "zenn-cli": "^0.1.94"
+    "zenn-cli": "^0.1.98"
   }
 }
