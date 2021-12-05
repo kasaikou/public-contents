@@ -3,7 +3,7 @@ title: MSEdge公式「音声で読み上げる」機能を使って2万字超の
 emoji: 🔊
 type: idea
 topics: [ブラウザ, MSEdge, Edge, 音声読み上げ, Zenn]
-published: false
+published: true
 ---
 
 # bing検索で「google chrome」と検索する皆様，いかがお過ごしでしょうか
