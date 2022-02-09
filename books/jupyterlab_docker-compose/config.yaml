@@ -12,3 +12,4 @@ topics: [Docker, DockerCompose, JupyterLab, Python]
 toc_depth: 1
 chapters:
   - 01.introduce
+  - 02.vs-anaconda
