@@ -59,15 +59,16 @@ published: false
 
 ## 登場ディレクトリの確認
 このリポジトリでは，最低でも4個の重要なディレクトリが出てくるので，それを確認します．
-- jupyterlab-container
-    これはローカル（Windowsなどのホスト）側で`git clone`されたリポジトリの **ローカル側の** ルートディレクトリです．
-- /workspace(WORKSPACE_DIR)
-    これはコンテナ（仮想環境）側で認識している`jupyterlab-container`ディレクトリです． **これが絶対パスです**．ローカル側でどこに`git clone`配置していようとも，コンテナでは厳密に`/workspace`というパスに配置されます．
-- datasets($DATASET_LOCALDIR)
-    これはデータセットを管理しているローカル側のディレクトリです．あとで解説しますが，データセットを`.gitignore`に入れて除外するよりも，データセットを一元的に管理した方が良いのであえて定義しておきます．
-- /resource/datasets($DATASET_DIR)
-    これはコンテナ側で認識している`datasets`ディレクトリです．`/workspace`同様，絶対パスで指定されており，ローカル側のどこに`datasets`ディレクトリがあろうとも関係なく，`/resource/datasets`に入れられます．
+### `jupyterlab-container`
+これはローカル（Windowsなどのホスト）側で`git clone`されたリポジトリの **ローカル側の** ルートディレクトリです．
+### `/workspace(WORKSPACE_DIR)`
+これはコンテナ（仮想環境）側で認識している`jupyterlab-container`ディレクトリです． **これが絶対パスです**．ローカル側でどこに`git clone`配置していようとも，コンテナでは厳密に`/workspace`というパスに配置されます．
+### `datasets` (`$DATASET_LOCALDIR`)
+これはデータセットを管理しているローカル側のディレクトリです．あとで解説しますが，データセットを`.gitignore`に入れて除外するよりも，データセットを一元的に管理した方が良いのであえて定義しておきます．
+### `/resource/datasets` (`$DATASET_DIR`)
+これはコンテナ側で認識している`datasets`ディレクトリです．`/workspace`同様，絶対パスで指定されており，ローカル側のどこに`datasets`ディレクトリがあろうとも関係なく，`/resource/datasets`に入れられます．
 
+### まとめると
 これらのディレクトリはそれぞれに同期することができます．
 つまりこう言うことです．
 | ローカル側ディレクトリ | | コンテナ側ディレクトリ |
@@ -80,22 +81,59 @@ published: false
 # 実際に実行してみる
 ここまででも十分に長かったと思いますが（もう既に書いていて疲れた），実はまだ何もしていないです．実際に実行してみましょう．
 
-1. 今回使用する[リポジトリ][container_repository]をフォークしてから，`git clone`で自分のローカル環境にダウンロードしてください．おそらくこの段階で以下のようなファイル構成になっているのではないかと思います．
-    ```
-    ./ (jupyterlab_container)   (dir)
-    ┣ .jupyter                  (dir)
-    ┣ container                 (dir)
-    ┃ ┣ requirements            (dir)
-    ┃ ┃ ┗ （省略）
-    ┃ ┗ Dockerfile
-    ┣ projects                  (dir)
-    ┃ ┗ （省略）
-    ┣ test                      (dir)
-    ┃ ┗ （省略）
-    ┣ docker-compose.yml
-    ┗ readme.md
-    ```
-2. 次に`.env`ファイルを`jupyterlab_container`ディレクトリ内に作成します．これはdockerコンテナをビルド・実行する際に与えられる環境変数のリストで`<name>=<value>` と言う形で指定します．以下の環境変数を指定してください．
+## ファイル構成の確認
+今回使用する[リポジトリ][container_repository]をフォークしてから，`git clone`で自分のローカル環境にダウンロードしてください．おそらくこの段階で以下のようなファイル構成になっているのではないかと思います．
+```
+./ (jupyterlab_container)   (dir)
+┣ .jupyter                  (dir)
+┣ container                 (dir)
+┃ ┣ requirements            (dir)
+┃ ┃ ┗ （省略）
+┃ ┗ Dockerfile
+┣ projects                  (dir)
+┃ ┗ （省略）
+┣ test                      (dir)
+┃ ┗ （省略）
+┣ docker-compose.yml
+┗ readme.md
+```
 
+## 環境変数の設定①
+次に`.env`ファイルを`jupyterlab_container`ディレクトリ内に作成します．これはdockerコンテナをビルド・実行する際に与えられる環境変数のリストで`<name>=<value>` と言う形で指定します．これは`.gitignore`に登録されているのでGitHub上に上がることはありません．以下の環境変数を指定してください．
+### `REQUIREMENTS=pytorch.txt`
+Pythonにおける，所謂requirements.txtをこの環境変数で指定します．`container/requirements`以下にあるファイルである必要があり，`jupyter.txt`はここで記述していなくても`pip install`されます．初期状態にはおそらく`pytorch.txt`があるのでそれをご利用ください．
+### `DATASET_LOCALDIR=D:\datasets`
+データセットをまとめている **「ローカルの（Windowsなどのホスト側）」** ディレクトリを指定してください．コンテナ内部から見ると`/resource/datasets`というディレクトリとしてディレクトリ内のファイルにアクセスすることができます．
+### `GIT_NAME=Your Name`
+Gitで使用する名前を入れてください．（`git config --global user.name $GIT_NAME`が実行されます．）
+### `GIT_MAIL=your_email@address.com`
+Gitで使用するメールアドレスを入れてください．（`git config --global user.email $GIT_MAIL`が実行されます．）
+### `GITHUB_CREDENTIAL=https://your_username:your_token@github.com`
+**これは任意です．必須ではないです** GitHubにpushするためにGitHubへの自動ログインを行うための環境変数です．GitHubはこの手の権限管理はすべてトークンで行うことになっているので[Personal access tokens][personal_access_tokens]からトークンを設定して上記の形で設定してください． **別にこれを指定していなくてもコンテナ実行毎にログインすればいいのでセキュリティを気にする方は入れるべきではないです**
+
+:::message alert
+`GITHUB_CREDENTIAL`はコンテナのビルド中に設定され，コンテナ内にログイン情報が記録されます．コンテナを`pull`しないようにお願いします．
+:::
+
+## 環境変数の設定②
+次に`.env`ファイルを次は`container`ディレクトリ内に作成します．これはdockerコンテナを実行する際に与えられる環境変数のリストで，先ほど同様`<name>=<value>`という形で指定し，`.gitignore`に登録されているのでGitHub上に上がることはありません．ここには仮想環境内で設定しておきたい環境変数を入れてください．
+
+```
+./ (jupyterlab_container)   (dir)
+┣ .jupyter                  (dir)
+┣ container                 (dir)
+┃ ┣ requirements            (dir)
+┃ ┃ ┗ （省略）
+┃ ┣ .env
+┃ ┗ Dockerfile
+┣ projects                  (dir)
+┃ ┗ （省略）
+┣ test                      (dir)
+┃ ┗ （省略）
+┣ .env
+┣ docker-compose.yml
+┗ readme.md
+```
 
 [container_repository]:https://github.com/StreamWest-1629/jupyterlab-container
+[personal_access_tokens]:https://github.com/settings/tokens
