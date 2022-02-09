@@ -2,9 +2,11 @@ title: JupyterLab環境構築で学ぶ！Docker Compose
 summary: "
   題目の通りです．
   何の縁があってか，最近機械学習を始める良い機会をいただきました．
+
   しかし，これ以上ローカル環境を汚したくない私としては，機械学習をはじめたいという気持ちはあっても，
   私は意地でもAnacondaを入れたくありません．
-  そこで今回はDocker Composeの機能を使い倒しながらJupyterLab環境を構築していくことにしました．
+
+  そこで今回はDocker Composeの機能を使いながらJupyterLab環境を構築していくことにしました．
   "
 published: false
 price: 0
@@ -13,3 +15,6 @@ toc_depth: 1
 chapters:
   - 01.introduce
   - 02.vs-anaconda
+  - 03.files
+  - 04.dockerfile
+  - 05.docker-compose
