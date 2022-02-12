@@ -13,8 +13,8 @@ price: 0
 topics: [Docker, DockerCompose, JupyterLab, Python]
 toc_depth: 1
 chapters:
-  - 01.introduce
-  - 02.vs-anaconda
-  - 03.files
-  - 04.dockerfile
-  - 05.docker-compose
+  - 01_introduce
+  - 02_vs-anaconda
+  - 03_files
+  - 04_dockerfile
+  - 05_docker-compose
