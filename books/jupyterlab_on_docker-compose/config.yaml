@@ -18,3 +18,4 @@ chapters:
   - 03_files
   - 04_dockerfile
   - 05_docker-compose
+  - 06_compose-build-up
