@@ -20,3 +20,4 @@ chapters:
   - 05_docker-compose
   - 06_compose-build-up
   - 07_env-dotenv
+  - 08_volume_intro
