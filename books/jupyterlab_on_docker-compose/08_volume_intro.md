@@ -1,5 +1,5 @@
 ---
-title: データ永続化と - ボリューム（バインドマウント）を理解しよう
+title: Docker Composeとローカルの話前編 - ボリューム（バインドマウント）を理解しよう
 ---
 
 # ボリュームとは
@@ -20,4 +20,3 @@ volumes:
   - ./path/to/local/dir:/path/to/container/dir
 ```
 ローカル側のファイルパスについて，docker-compose.ymlから見た相対パスを指定するときは`.`から始めてください．
-
