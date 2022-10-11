@@ -2,7 +2,7 @@
 title: Stable Diffusionを使って絵の依頼を出してボカコレ2022秋に投稿した
 emoji: 🖊️
 type: idea
-topics: [stablediffusion, AI, 画像生成]
+topics: [stablediffusion, AI, 画像生成, ボカコレ2022秋]
 published: false
 ---
 
