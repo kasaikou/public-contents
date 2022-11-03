@@ -166,8 +166,6 @@ Git は各変更（これを `Commit` といいます）毎にその変更内容
 
 ![](https://storage.googleapis.com/zenn-user-upload/edb12c6550d9-20221103.png)
 
-![](https://storage.googleapis.com/zenn-user-upload/6884b63d2871-20221103.png)
-
 ちなみに，終わった変更については先ほどから触っている `SOURCE CONTROL` の下にある `COMMITS` を開くと出てきます．
 
-
+![](https://storage.googleapis.com/zenn-user-upload/16e6e2920dcb-20221103.png)
