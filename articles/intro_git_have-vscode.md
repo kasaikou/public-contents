@@ -3,7 +3,7 @@ title: 布教Git(hub と VSCode)
 emoji: 🔰
 type: idea
 topics: [git, vscode]
-published: false
+published: true
 ---
 
 :::message alert
