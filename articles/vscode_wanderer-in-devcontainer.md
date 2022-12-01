@@ -2,7 +2,7 @@
 title: VSCode Devcontainer 放浪記
 emoji: ☂
 type: tech
-topics: [VSCode, Devcontainer]
+topics: [vscode, devcontainer]
 published: false
 ---
 
