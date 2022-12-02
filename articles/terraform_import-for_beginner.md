@@ -3,7 +3,7 @@ title: 未知のサービスに対するTerraform初心者アプローチ
 emoji: 🛵
 type: tech
 topics: [terraform, AWS]
-published: true
+published: false
 ---
 
 # 私を含めた最初からTerraformを使おうとして挫折した方々，いかがお過ごしでしょうか
