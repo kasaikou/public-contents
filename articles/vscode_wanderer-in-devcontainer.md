@@ -3,7 +3,7 @@ title: VSCode Devcontainer 放浪記
 emoji: ☂
 type: tech
 topics: [vscode, devcontainer]
-published: false
+published: true
 ---
 
 [かさい]: https://twitter.com/streamwest1629
