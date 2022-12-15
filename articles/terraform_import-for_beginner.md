@@ -780,7 +780,6 @@ $ terraform apply
 :::details 答え
 （少なくとも `hashicorp/aws v4.47.0` において，）タスク定義 `aws_ecs_task_definition` にあるタスクロール `task_role_arn` が表示されません．確認してみてください．
 :::
-:::
 
 それでは修正していきます．
 
