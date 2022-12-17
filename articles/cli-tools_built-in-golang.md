@@ -1,6 +1,6 @@
 ---
 title: Golang製CLIツールのすすめ
-emoji: 
+emoji: 🚀
 type: idea
 topics: [golang, cli]
 published: false
