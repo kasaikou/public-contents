@@ -2,7 +2,7 @@
 title: 技術記事はタイトルが9割
 emoji: 😇
 type: idea
-published: false
+published: true
 ---
 # 「技術記事はタイトルが9割？それは違うぞ！」と言いに来たそこのあなたへ
 
@@ -10,7 +10,7 @@ published: false
 
 まあ，とはいえせっかくですからワタシの駄文を読んでいってください．これはまあ，随筆みたいな軽い読み物です．
 
-なんか Advent Calendar の記事らしいです．
+なんか [Advent Calendar](https://qiita.com/advent-calendar/2023/output) の記事らしいです．
 
 # TL;DR（前半）
 
