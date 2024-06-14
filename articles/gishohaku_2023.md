@@ -3,7 +3,7 @@ title: 技書博にはじめて参加しました
 emoji: ✨
 type: idea
 topics: ["技書博"]
-published: true
+published: false
 ---
 最近は大学での研究やら家の事情やらで全然技術記事を書けていないかさいです．
 
