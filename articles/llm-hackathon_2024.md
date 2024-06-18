@@ -3,7 +3,7 @@ title: LLM の効果的な社会実装 【社内生成 AI ハッカソン】
 emoji: 🔨
 type: idea
 topics: [LLM, 大規模言語モデル, ハッカソン]
-published: false
+published: true
 ---
 
 # まえがき
