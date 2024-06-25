@@ -3,7 +3,7 @@ title: AWS Summit Japan 2024 参加メモ（箇条書き）
 　emoji: 🎷
 type: idea
 topics: [AWS]
-published: false
+published: true
 ---
 
 # AWS Summit Japan 2024 に参加しました
