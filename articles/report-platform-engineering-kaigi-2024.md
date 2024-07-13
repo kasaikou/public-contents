@@ -3,7 +3,7 @@ title: Platform Engineering Kaigi 2024 運営しました
 emoji: 🖋️
 type: idea
 topics: [PEK2024, Platform Engineering]
-published: false
+published: true
 ---
 
 # まえがき
