@@ -40,57 +40,18 @@ module "vpc" {
 }
 ```
 
-注目してほしい部分は `private_subnets` と `public_subnets` です。これらのパラメータを元にサブネットを作成するのですが、その際に `azs` を参照しています。これにより、インデックスを気にしながら定義していく必要があるのです。
+注目してほしい部分は `private_subnets` と `public_subnets` です。これらのパラメータを元にサブネットを作成するのですが、その際に `azs` を参照しています。これにより、インデックスを気にしながら定義していく必要がある上に、 `azs` はパブリックサブネットとプライベートサブネット両方に配慮する必要があります。
 
 ## 違和感その1: 1リソースを作成するために複数のパラメータを参照する必要があること
 
 複数のパラメータを用いることで複数のリソースが構築される多対多の関係は扱いにくいです。
-今回の例でいうと、パブリックサブネットを2個作るために、 `azs` と `public_subnets` を見ていく必要があります。
+今回の例でいうと、パブリックサブネットを2個作るために、 `azs` と `public_subnets` を見ていく必要があり、同様にプライベートサブネットも `azs` と `private_subnets` をみていく必要があります。
 
-```mermaid
-erDiagram
+![](https://storage.googleapis.com/zenn-user-upload/aebd2ddfb895-20240720.png)
 
-"(Public) Subnet Resources" |o--o| "public_subnets variable" : "インデックスで参照"
-"(Public) Subnet Resources" |o--o| "azs variable" : "インデックスで参照"
-"(Private) Subnet Resources" |o--o| "private_subnets variable" : "インデックスで参照"
-"(Private) Subnet Resources" |o--o| "azs variable" : "インデックスで参照"
-
-"public_subnets variable" {
-  0 10.0.101.0/24
-  1 10.0.102.0/24
-  2 10.0.103.0/24
-}
-
-"private_subnets variable" {
-  0 10.0.1.0/24
-  1 10.0.2.0/24
-  2 10.0.3.0/24
-}
-
-"azs variable" {
-  0 ap-northeast-1a
-  1 ap-northeast-1c
-  2 ap-northeast-1d
-}
-```
+これにより複数のリソースを複数のパラメータから作成していく、という状況に陥ることになります。また、前述したように `azs` はパブリックサブネットとプライベートサブネットどちらからも依存しているので、どちらにも配慮しながら書かなければいけなくなるのです。
 
 本来、1個のリソースに対して複数個のパラメータがあるのがわかりやすいと思っていて、どんな形であれ、**「リソースに対応するパラメータリストがある」**という状態が望ましいはずです。
-
-```mermaid
-erDiagram
-
-"Subnet A" {
-  is_public false
-  cidr 10.0.1.0/24
-  az ap-northeast-1a
-}
-
-"Subnet B" {
-  is_public true
-  cidr 10.0.102.0/24
-  az ap-northeast-1c
-}
-```
 
 これを Terraform 的に書くのであれば、
 
@@ -102,7 +63,7 @@ erDiagram
 }
 ```
 
-という形にきっとなるでしょう。
+きっとこういう形になるでしょう。
 
 ## 違和感その2: インデックス管理されているので変更（特に削除）に非常に弱い
 
