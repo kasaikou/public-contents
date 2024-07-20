@@ -3,7 +3,7 @@ title: 巷の Terraform Module に違和感を感じたので納得できるも�
 emoji: 🧪
 type: tech
 topics: [Terraform, VPC, AWS]
-published: false
+published: true
 ---
 
 今日は最近 Terraform Module に感じていた使いにくさの理由と、その克服方法について AWS VPC を構築しながら整理していきます。
@@ -107,7 +107,7 @@ Plan: 4 to add, 1 to change, 9 to destroy.
 
 # とりあえず作ってみた
 
-ここまで、一通りの違和感を話したので、とりあえず [kasaikou/vpc/aws](https://registry.terraform.io/modules/kasaikou/vpc/aws/latest) で作ってみました。
+ここまで、一通りの違和感を話したので、とりあえず [kasaikou/vpc/aws](https://registry.terraform.io/modules/kasaikou/vpc/aws/latest) でここまでの違和感を払拭するモジュールを作ってみました。
 
 コンセプトとしては以下の通りです。
 
