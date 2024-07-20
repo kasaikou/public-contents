@@ -47,7 +47,7 @@ module "vpc" {
 複数のパラメータを用いることで複数のリソースが構築される多対多の関係は扱いにくいです。
 今回の例でいうと、パブリックサブネットを2個作るために、 `azs` と `public_subnets` を見ていく必要があります。
 
-:::mermaid
+```mermaid
 erDiagram
 
 "(Public) Subnet Resources" |o--o| "public_subnets variable" : "インデックスで参照"
@@ -72,11 +72,11 @@ erDiagram
   1 ap-northeast-1c
   2 ap-northeast-1d
 }
-:::
+```
 
 本来、1個のリソースに対して複数個のパラメータがあるのがわかりやすいと思っていて、どんな形であれ、**「リソースに対応するパラメータリストがある」**という状態が望ましいはずです。
 
-:::mermaid
+```mermaid
 erDiagram
 
 "Subnet A" {
@@ -90,7 +90,7 @@ erDiagram
   cidr 10.0.102.0/24
   az ap-northeast-1c
 }
-:::
+```
 
 これを Terraform 的に書くのであれば、
 
