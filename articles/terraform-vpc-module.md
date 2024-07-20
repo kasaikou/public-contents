@@ -47,7 +47,7 @@ module "vpc" {
 複数のパラメータを用いることで複数のリソースが構築される多対多の関係は扱いにくいです。
 今回の例でいうと、パブリックサブネットを2個作るために、 `azs` と `public_subnets` を見ていく必要があり、同様にプライベートサブネットも `azs` と `private_subnets` をみていく必要があります。
 
-![](https://storage.googleapis.com/zenn-user-upload/aebd2ddfb895-20240720.png)
+![](https://storage.googleapis.com/zenn-user-upload/0f2dd9f15b2b-20240720.png)
 
 これにより複数のリソースを複数のパラメータから作成していく、という状況に陥ることになります。また、前述したように `azs` はパブリックサブネットとプライベートサブネットどちらからも依存しているので、どちらにも配慮しながら書かなければいけなくなるのです。
 
