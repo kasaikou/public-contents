@@ -250,9 +250,31 @@ type SampleBuilder interface {
 | :--- | :--- | :---
 | `goaccPreBuildHook()` | required のフィールドが設定される前（構造体が初期化された状態） | フィールドの初期化など
 | `goaccPostBuildHook()` | `(XxxBuilder).Build()` 内の `return` 直前 | フィールドを埋める、バリデーションで `panic()` を発生させるなど
-| `goaccPostBuildHook() error` | (XxxBuilder).Build()` 内の `return` 直前 | バリデーションなど
+| `goaccPostBuildHook() error` | `(XxxBuilder).Build()` 内の `return` 直前 | バリデーションなど
 
+:::details goaccPreBuildHook() はこんな感じで使われます
 
+```go
+
+```
+
+:::
+
+:::details goaccPostBuildHook() はこんな感じで使われます
+
+```go
+
+```
+
+:::
+
+:::details goaccPostBuildHook() error はこんな感じで使われます
+
+```go
+
+```
+
+:::
 
 ## Accessor Generation
 
@@ -268,7 +290,7 @@ type SampleBuilder interface {
 
 # おわりに
 
-まだ実装していない機能は色々あり、元々ドメインモデルで使用することを前提に置いていたので、型パラメータへの対応や排他処理などできていないことが多いです。あと個人的にはrange-over-func対応も行っていきたいです。
+まだ実装していない機能は色々あり、元々ドメインやエンティティとして使用することを前提に置いていたので、型パラメータへの対応や排他処理などできていないことが多いです。あと個人的にはrange-over-func対応も行っていきたいです。
 
 まだ個人的に使うための最低限の機能しか作っていないのでもう少し機能追加を行っていきます。
 
