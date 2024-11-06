@@ -8,7 +8,7 @@ published: false
 
 今回はPull Requestを読み取ってこんな感じのチェックリストを自動生成するチェックリストを作成したのでその紹介をする記事です。
 
-![](https://github.com/user-attachments/assets/e166fc30-f9dd-47d4-9f06-fcaac028d265)
+![](https://storage.googleapis.com/zenn-user-upload/5db23ecc908d-20241106.png)
 
 # TL;DR
 
