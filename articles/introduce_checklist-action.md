@@ -8,22 +8,24 @@ published: false
 
 今回はPull Requestを読み取ってこんな感じのチェックリストを自動生成するチェックリストを作成したのでその紹介をする記事です。
 
+![](https://private-user-images.githubusercontent.com/80010105/383348034-e166fc30-f9dd-47d4-9f06-fcaac028d265.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzA4NTM0MTEsIm5iZiI6MTczMDg1MzExMSwicGF0aCI6Ii84MDAxMDEwNS8zODMzNDgwMzQtZTE2NmZjMzAtZjlkZC00N2Q0LTlmMDYtZmNhYWMwMjhkMjY1LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDExMDYlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMTA2VDAwMzE1MVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTgyODg2MmFiYWU1MTM5MzRmMzMzNTBkNzkzODgzMDljZTExYWZhOGQwMDMzM2M4ZmJkMjFmODhhN2M1NWQ1NDkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.3aC4GofjR4SHmGxoWEwABmDjbVG8eH77Ut217KzpV20)
+
 # TL;DR
 
-- PR テンプレートにチェックリストを入れがちだけど、知見が溜まっていくに従ってチェック項目が増えていくのはつらいよ
-- そこで、ラベルでチェックリストをフィルタリングしつつ、チェックリストを自動作成する GitHub Actions を作ったよ
-- ラベル設定のめんどくささは actions/labeler が解決するから、それに相乗りするだけでいいよ
-- 基本的にはチェックリスト用のコメントが作成されるけれど、少しテンプレートを変更することで PR テンプレートっぽくチェックリストを作成することもできるよ
+- **PR テンプレートにチェックリストを入れがちだけど、知見が溜まっていくに従ってチェック項目が増えていくのはつらいよ**
+- **そこで、ラベルでチェックリストをフィルタリングしつつ、チェックリストを自動作成する GitHub Actions を作ったよ**
+- **ラベル設定のめんどくささは `actions/labeler` が解決するから、それに相乗りするだけでいいよ**
+- **基本的にはチェックリスト用のコメントが作成されるけれど、少しテンプレートを変更することで PR テンプレートっぽくチェックリストを作成することもできるよ**
 
 # 背景とかコンセプト
 
-個人での開発でも仕事での開発でもそうですが、多くの人が「N+1問題を考慮した実装になっているか？」「ちゃんとテストを追加したか？」というようなチェックリストを `pull_request_template.md` に書いていると思います。
+個人での開発でも仕事での開発でもそうですが、多くの人が **「N+1問題を考慮した実装になっているか？」「ちゃんとテストを追加したか？」** というようなチェックリストを `pull_request_template.md` に書いていると思います。
 
 https://axolo.co/blog/p/part-3-github-pull-request-template
 
 ワタシ個人の意見ですが、こういったチェックリストはプルリクエスト毎に関わった人全員が必ず見るものであるため、社内での知見を共有する場としても非常に有用なものだと思っており、必要に応じてどんどん追加していくべきものだと思っています。
 
-しかし、プルリクエスト毎に出てくるがゆえに、肥大化していくとプルリクエストテンプレートが大きなものになっていき、認知負荷が増大していきます。それだけではなく、本来プルリクエストでフォーカスしていない部分の知見も表示され続けるため、「プルリクエストとは関係のないチェックリストを埋める」という事務作業に追われてしまいます。最終的には「じゃあこのチェックリストにチェックしていく意味ないよね」となってプルリクエストテンプレートにあるチェックリストは得てして形骸化しがちです。
+しかし、プルリクエスト毎に出てくるがゆえに、肥大化していくとプルリクエストテンプレートが大きなものになっていき、認知負荷が増大していきます。それだけではなく、本来プルリクエストでフォーカスしていない部分の知見も表示され続けるため、「プルリクエストとは関係のないチェックリストを埋める」という事務作業に追われてしまいます。最終的には **「関係ないチェックリストにチェックしていく意味ないよね」** となってプルリクエストテンプレートにあるチェックリストは得てして形骸化しがちです。
 
 チェックリストは関係のあるところだけを抽出して表示するべきだと考え、今回の Action を作成しました。
 
@@ -84,13 +86,13 @@ jobs:
 
 :::
 
-## 推奨: actions/labeler との併用
+## 推奨: `actions/labeler` との併用
 
 さて、上述した方法で一応 Action 自体は使用できるのですが、ラベルを設定するめんどくささがまだあります。
 
-そこで、ブランチ名や変更ファイル名などからラベルを自動設定するために、[actions/labeler](https://github.com/actions/labeler) と併用することを考えます。
+そこで、ブランチ名や変更ファイル名などからラベルを自動設定するために、**[actions/labeler](https://github.com/actions/labeler) と併用すること** を考えます。
 
-すでに actions/labelerが設定されている場合は、後続ステップに `kasaikou/pr-checklist-action` を設定するだけで、ラベル設定後に自動でチェックリストが生成されます。
+すでに actions/labelerが設定されている場合は、**後続ステップに `kasaikou/pr-checklist-action` を設定する**だけで、ラベル設定後に自動でチェックリストが生成されます。
 
 ```diff yaml
 on:
@@ -116,9 +118,9 @@ jobs:
 
 対応しなかった理由は以下の通り。
 
-- 実装がめんどくさい割にメリットがあまりなかった
+- **実装がめんどくさい割にメリットがあまりなかった**
   - 他の方が作った Action なども見ていたのですが、面倒だなあという気持ちになってしまってやめました。正直この理由が一番大きいです。すでに labeler で実現できているのであれば相乗りしてしまう方が手っ取り早いです。
-- actions/labeler と重複して設定するメリットが思いつかなかった
+- **`actions/labeler` と重複して設定するメリットが思いつかなかった**
   - 微妙にフォーカスしている部分が違うからといって `actions/labeler` でも `pr-checklist-action` でも似たような設定をする意味があまりなさそうでした。
   - それよりも、逆に設定ファイルを既存の `actions/labeler` に寄せてしまって、設定内容を同期してしまった方があとから二重で変更する手間を削減するメリットの方が大きいと思われます。
 
@@ -151,7 +153,7 @@ jobs:
 この Action では、この開始と終了の2種類のHTMLコメントのあるプルリクエストのコメントに対してチェックリストの Upsert を行います。
 この検証はプルリクエスト内のコメントだけでなく、プルリクエストのボディに対してもチェックが行っています。
 
-そのため、 `pull_request_template.md` を以下のように変更すると、チェックリストは今までのプルリクエストテンプレートのようにプルリクエストのボディ内を更新するようになります。
+そのため、 `pull_request_template.md` を以下のように変更すると、 `kasaikou/pr-checklist-action` は**今までのプルリクエストテンプレートのようにプルリクエストのボディ内を更新するようになります**。
 
 ```diff md
 ## Background
