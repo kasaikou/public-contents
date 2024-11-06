@@ -2,7 +2,7 @@
 title: プルリクエスト時にラベルから自動でチェックリストを作成・更新するGitHub Actionsを作成した
 emoji: 🔖
 type: tech
-topics: [gha, github actions, プルリクエスト, pull request, pr]
+topics: [gha, github actions, pull request, pr]
 published: false
 ---
 
