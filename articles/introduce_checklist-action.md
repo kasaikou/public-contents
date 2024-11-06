@@ -103,9 +103,9 @@ on:
   pull_request:
 jobs:
   run:
-+   permissions:
-+     contents: read
-+     pull-requests: write
+    permissions:
+      contents: read
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
