@@ -99,17 +99,17 @@ on:
   pull_request:
 jobs:
   run:
-+    permissions:
-+      contents: read
-+      pull-requests: write
++   permissions:
++     contents: read
++     pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/labeler@v5
-+      - uses: kasaikou/pr-checklist-action@main
-+        with:
-+          github-token: ${{ secrets.GITHUB_TOKEN }}
-+          config: pr-checklist.yaml
++     - uses: kasaikou/pr-checklist-action@main
++       with:
++         github-token: ${{ secrets.GITHUB_TOKEN }}
++         config: pr-checklist.yaml
 ```
 
 ## あえて導入しなかった機能
@@ -160,7 +160,6 @@ jobs:
 
 
 ## Changes
-- 
 
 +## Checks
 +
