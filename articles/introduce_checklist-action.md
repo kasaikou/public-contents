@@ -1,12 +1,12 @@
 ---
-title: プルリクエスト時にラベルから自動でチェックリストを作成・更新するGitHub Actionsを作成した
+title: プルリクエスト時にラベルから自動でチェックリストを作成・更新するGitHub Actionを作成した
 emoji: 🔖
 type: tech
 topics: [gha, github actions, pull request, pr]
 published: false
 ---
 
-今回はPull Requestを読み取ってこんな感じのチェックリストを自動生成するAction [`kasaikou/pr-checklist-action`](https://github.com/kasaikou/pr-checklist-action) を作成したのでその紹介をする記事です。
+今回はPull Requestを読み取ってこんな感じのチェックリストを自動生成する [`kasaikou/pr-checklist-action`](https://github.com/kasaikou/pr-checklist-action) というGitHub Actionを作成したのでその紹介をする記事です。
 
 ![](https://storage.googleapis.com/zenn-user-upload/5db23ecc908d-20241106.png)
 
