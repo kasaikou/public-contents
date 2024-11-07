@@ -3,7 +3,7 @@ title: プルリクエスト時にラベルから自動でチェックリスト�
 emoji: 🔖
 type: tech
 topics: [gha, github actions, pull request, pr]
-published: false
+published: true
 ---
 
 今回はPull Requestを読み取ってこんな感じのチェックリストを自動生成する [`kasaikou/pr-checklist-action`](https://github.com/kasaikou/pr-checklist-action) というGitHub Actionを作成したのでその紹介をする記事です。
