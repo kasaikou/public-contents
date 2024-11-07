@@ -6,7 +6,7 @@ topics: [gha, github actions, pull request, pr]
 published: false
 ---
 
-今回はPull Requestを読み取ってこんな感じのチェックリストを自動生成するチェックリストを作成したのでその紹介をする記事です。
+今回はPull Requestを読み取ってこんな感じのチェックリストを自動生成するAction [`kasaikou/pr-checklist-action`](https://github.com/kasaikou/pr-checklist-action) を作成したのでその紹介をする記事です。
 
 ![](https://storage.googleapis.com/zenn-user-upload/5db23ecc908d-20241106.png)
 
