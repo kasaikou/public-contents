@@ -3,7 +3,7 @@ title: 【技育展参戦記録 - 開発スキル支援】rehearsalという名�
 emoji: ✒
 type: tech
 topics: [技育展, golang, テストツール]
-published: true
+published: false
 ---
 
 :::message

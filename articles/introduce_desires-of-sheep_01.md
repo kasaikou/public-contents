@@ -3,7 +3,7 @@ title: 【技育CAMP参戦記録 - 無駄開発編】希望の睡眠【アイデ
 emoji: 💤
 type: idea
 topics: [ハッカソン, 振り返り, アイデア, 個人開発]
-published: true
+published: false
 ---
 
 今回は2021年06月20日に行われた「技育CAMP vol.4 無駄開発をしよう！」に参加した際に見たアイデア視点での振り返りです。
